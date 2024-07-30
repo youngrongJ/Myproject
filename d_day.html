@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Days until Christmas</title>
+  </head>
+  <body>
+    <h1>Days until Christmas</h1>
+    <div class="d-day"></div>
+
+    <script>
+      const today = new Date();
+      console.log(today);
+
+      const Christmas = new Date(2024, 12, 25);
+
+      const timeDiff = Christmas.getTime();
+      -today.getTime();
+      console.log(timeDiff);
+
+      const daysUntilChristmas = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+      console.log("Days until Christmas:", daysUntilChristmas);
+    </script>
+  </body>
+</html>

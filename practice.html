@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guess a Number</title>
+    <style>
+      .result {
+        font-size: 1.5em;
+        margin-top: 10px;
+      }
+      .hint {
+        font-size: 1.2em;
+        margin-top: 5px;
+      }
+      .correct {
+        color: blue;
+      }
+      .incorrect {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Guess a Number</h1>
+    <h3>Choose a number between 1 and 10</h3>
+    <input type="number" id="userInput" min="1" max="10" />
+    <button id="submit-btn">Submit</button>
+
+    <script>
+      // Generate a random number between 1 and 10
+      const randomNum = Math.ceil(Math.random() * 10);
+
+      // Select elements by their ID
+      const userInput = document.querySelector("#userInput");
+      const submitBtn = document.querySelector("#submit-btn");
+
+      // Create and append result and hint elements
+      const result = document.createElement("div");
+      result.className = "result";
+      document.body.appendChild(result);
+
+      const hint = document.createElement("div");
+      hint.className = "hint";
+      document.body.appendChild(hint);
+
+      // Add event listener to the submit button
+      submitBtn.addEventListener("click", function () {
+        const userValue = Number(userInput.value);
+
+        // Clear previous hint and result styles
+        result.classList.remove("correct", "incorrect");
+        hint.classList.remove("correct", "incorrect");
+
+        if (userValue === randomNum) {
+          result.innerText = "정답입니다";
+          result.classList.add("correct");
+          hint.innerText = "";
+        } else if (userValue < randomNum) {
+          result.innerText = "다시 시도하세요";
+          hint.innerText = "UP";
+          result.classList.add("incorrect");
+        } else {
+          result.innerText = "다시 시도하세요";
+          hint.innerText = "DOWN";
+          result.classList.add("incorrect");
+        }
+      });
+    </script>
+  </body>
+</html>
